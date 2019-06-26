@@ -43,7 +43,13 @@ function open_ae_file(aepPath){
         if (my_file.exists){
             new_project = app.open(my_file);
         if (new_project){
+           // Everything you need to do for every file is here START: 
+           
            app.project.removeUnusedFootage();
+           
+           find_fonts ();
+           
+            // Everything you need to do for every file is here END: 
                 }
             }
         
@@ -52,5 +58,60 @@ function open_ae_file(aepPath){
     app.project.save(my_file);
     
     }
+
+//Additional functions to be used inside loop for every file
+function find_fonts(){
+               
+                
+                     var Layer_Found = 0;
+                     
+          //  alert("Going to scale Text!");
+         
+                 for (var k = 1; k <= app.project.numItems; k++){
+                                if (app.project.item(k) instanceof CompItem) {
+                                    
+                                     var myLayers = app.project.item(k).layers;
+                                     
+                                            for (var i = 1; i <= myLayers.length; i ++) { 
+                                                
+                                                
+                                                var CurrLayer = app.project.item(k).layer(i);
+                                                // REMOVE templater
+                                                 if (CurrLayer.Effects.property("Templater Settings")){
+                                                                                    //deleteTemplater Effect of this layer as we will attach to copy
+                                                                                          CurrLayer.Effects.property("Templater Settings").remove();
+                                                                                      }
+                                                
+                                                if ((CurrLayer.property("Source Text") !== null)){   // for text layer                                                                                       
+                                                       
+                                                         Layer_Found = 1;
+                                                         var textProp = CurrLayer.property("Source Text");
+                                                         var textDocument = textProp.value;
+                                                         var curr_font = textDocument.font; // read current font
+                                                         
+                                                         write_log(curr_font);
+                                                         
+                                                         }
+                                                
+                                                
+                                                }
+                                            }
+                                        }
+                                    if (Layer_Found == 0){
+                                      //  alert("No Text to Scale");
+                                      
+                                        }
+       
+                 
+    }
+//===== end of function
+
+function write_log(curr_font){
+        var logFile = new File("C:/prj/fonts_list_log.txt");
+        logFile.open("a");
+        logFile.writeln(curr_font);
+        logFile.close();
+}
+// -- END of additional functions
 
 app.endUndoGroup();
