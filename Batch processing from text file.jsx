@@ -33,8 +33,6 @@ var myTextFile = File.openDialog("Please select input text file.");
     alert("No text file selected.");
   }
 
-
-
 // Open next AE file
 function open_ae_file(aepPath){
    // app.open();
@@ -62,7 +60,6 @@ function open_ae_file(aepPath){
 //Additional functions to be used inside loop for every file
 function find_fonts(){
                
-                
                      var Layer_Found = 0;
                      
           //  alert("Going to scale Text!");
@@ -74,14 +71,8 @@ function find_fonts(){
                                      
                                             for (var i = 1; i <= myLayers.length; i ++) { 
                                                 
-                                                
                                                 var CurrLayer = app.project.item(k).layer(i);
-                                                // REMOVE templater
-                                                 if (CurrLayer.Effects.property("Templater Settings")){
-                                                                                    //deleteTemplater Effect of this layer as we will attach to copy
-                                                                                          CurrLayer.Effects.property("Templater Settings").remove();
-                                                                                      }
-                                                
+                                              
                                                 if ((CurrLayer.property("Source Text") !== null)){   // for text layer                                                                                       
                                                        
                                                          Layer_Found = 1;
@@ -92,8 +83,6 @@ function find_fonts(){
                                                          write_log(curr_font);
                                                          
                                                          }
-                                                
-                                                
                                                 }
                                             }
                                         }
@@ -102,7 +91,6 @@ function find_fonts(){
                                       
                                         }
        
-                 
     }
 //===== end of function
 
