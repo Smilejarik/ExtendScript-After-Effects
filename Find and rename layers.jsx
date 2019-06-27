@@ -2,13 +2,27 @@
  *Find and rename layers
 
  */
-fun();
-function fun(){
+var mainWindow = new Window("palette", "Rename Layers", undefined); // main frame, column
+mainWindow.orientation = "column";
 
-var searchWord = "image";
-var replaceWord = "mixed-media";
-var maxSlides = 30;
-var maxElements = 15;
+var inputGroup = mainWindow.add("group", undefined, "Input Text Group");  // first group, row
+inputGroup.orientation = "column"
+var oldName = inputGroup.add("edittext", undefined, "Old Name");
+oldName.size = [100, 25];
+var newName = inputGroup.add("edittext", undefined, "New Name");
+newName.size = [100, 25];
+var renameButton = inputGroup.add("button", undefined, "Rename Layers");
+renameButton.size = [100, 25];
+
+mainWindow.center();
+mainWindow.show();
+
+renameButton.onClick = function (){
+
+var searchWord = oldName.text;
+var replaceWord = newName.text;
+var maxSlides = 10;  // if you have numbers in name like "Name to Search1.1" so this parameter is first number
+var maxElements = 10;   // if you have numbers in name like "Name to Search1.1" so this parameter is second number
 
 
 app.beginUndoGroup("Find and rename layers");
@@ -33,14 +47,7 @@ app.beginUndoGroup("Find and rename layers");
                                                             }
                                                     }
                                             } 
-                                    
-                                    
                                 }
                         }
-
                     app.endUndoGroup();
-
-                     
-
-
 }
