@@ -6,12 +6,12 @@ var mainWindow = new Window("palette", "Remove Effect", undefined); // main fram
 mainWindow.orientation = "column";
 
 var inputTextGroup = mainWindow.add("group", undefined, "Input Text Group");  // first group, row
-inputTextGroup.orientation = "row"
+inputTextGroup.orientation = "row";
 var textInput = inputTextGroup.add("edittext", undefined, "Effect Name");
 textInput.size = [100, 25];
 
 var buttonGroup = mainWindow.add("group", undefined, "Button Group");
-buttonGroup.orientation = "row"
+buttonGroup.orientation = "row";
 var removeButton = buttonGroup.add("button", undefined, "Remove Effect");
 removeButton.size = [100, 25];
 

@@ -6,7 +6,7 @@ var mainWindow = new Window("palette", "Rename Layers", undefined); // main fram
 mainWindow.orientation = "column";
 
 var inputGroup = mainWindow.add("group", undefined, "Input Text Group");  // first group, row
-inputGroup.orientation = "column"
+inputGroup.orientation = "column";
 var oldName = inputGroup.add("edittext", undefined, "Old Name");
 oldName.size = [100, 25];
 var newName = inputGroup.add("edittext", undefined, "New Name");
