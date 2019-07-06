@@ -1,9 +1,9 @@
 ﻿/**
- *Find and rig layers
+ *Composition Controls panel which allows you to change multiple selected comp's settings at once
 
  */
 
-var mainWindow = new Window("palette", "Remove Effect", undefined); // main frame, column
+var mainWindow = new Window("palette", "Multicomp Controls", undefined); // main frame, column
 mainWindow.orientation = "column";
 
 var inputTextGroup = mainWindow.add("group", undefined, "Input Text Group");  // first group, row
@@ -81,13 +81,9 @@ app.beginUndoGroup("Find and ColorControl text");
                                                                                                
                                             } 
                                   }
-                                    
-                                
-                        
 
                     app.endUndoGroup();
               
-            //         app.executeCommand(app.findMenuCommandId("Save a Copy As CC (13)..."));
-
+            //         app.executeCommand(app.findMenuCommandId("Save a Copy As ...."));  // save as if needed
 
 }
