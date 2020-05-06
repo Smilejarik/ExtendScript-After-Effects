@@ -1,5 +1,6 @@
 ﻿/**
  *Script removes defined effect from the selected compositions
+ updated line
  */
 
 var mainWindow = new Window("palette", "Remove Effect", undefined); // main frame, column
